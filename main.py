@@ -1,10 +1,11 @@
-import sys
-import pygame
+import sys, pygame
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 from player import Player
 from shot import Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from ui_helper import draw_text
+from scoring import set_score
 
 def main():
     pygame.init()
@@ -19,8 +20,10 @@ def main():
     Shot.containers = (shots, drawables, updatables)
 
 
-    asteroidfield = AsteroidField()
+    AsteroidField()
+    score = 0
     dt = 0
+    font = pygame.font.SysFont("comic sans", 30)
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -28,15 +31,16 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-        #Update    
+                return   
         updatables.update(dt)
         for asteroid in asteroids:
             if asteroid.collides_with_circle(player):
                 print("Game over!")
+                set_score(score)
                 sys.exit(0)
             for shot in shots:
                 if asteroid.collides_with_circle(shot):
+                    score += 1
                     asteroid.split()
                     shot.kill()
 
@@ -44,6 +48,7 @@ def main():
         screen.fill("black")
         for object in drawables:
             object.draw(screen)
+        draw_text(screen, f'Score: {score}', font, "white", SCREEN_WIDTH - (SCREEN_WIDTH/20), SCREEN_HEIGHT - SCREEN_HEIGHT/20)
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
