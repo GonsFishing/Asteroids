@@ -14,6 +14,6 @@ def set_score(score):
         if score > int(highscore):
             new_highscore(score, int(highscore))
         else:
-            print(highscore)
+            print(score)
     else:
         new_highscore(score, 0)

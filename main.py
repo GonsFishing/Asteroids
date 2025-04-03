@@ -48,7 +48,7 @@ def main():
         screen.fill("black")
         for object in drawables:
             object.draw(screen)
-        draw_text(screen, f'Score: {score}', font, "white", SCREEN_WIDTH - (SCREEN_WIDTH/20), SCREEN_HEIGHT - SCREEN_HEIGHT/20)
+        draw_text(screen, f'Score: {score}', font, "white", SCREEN_WIDTH - (SCREEN_WIDTH/10), SCREEN_HEIGHT - (SCREEN_HEIGHT/10))
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
