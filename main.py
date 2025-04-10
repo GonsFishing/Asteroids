@@ -4,6 +4,7 @@ from player import Player
 from shot import Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from explosion import Explosion
 from ui_helper import draw_text
 from scoring import set_score
 
@@ -18,6 +19,8 @@ def main():
     Asteroid.containers = (asteroids, updatables, drawables)
     AsteroidField.containers = (updatables)
     Shot.containers = (shots, drawables, updatables)
+    Explosion.containers = (drawables, updatables)
+
 
 
     AsteroidField()

@@ -12,3 +12,4 @@
 - Add a shield power-up
 - Add a speed power-up
 - Add bombs that can be dropped
+- Add highscore.txt if it does not exist
