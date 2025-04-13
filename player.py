@@ -2,8 +2,11 @@ import pygame
 from shot import Shot
 from constants import PLAYER_SHOT_SPEED, PLAYER_RADIUS, PLAYER_SPEED, PLAYER_TURN_SPEED, PLAYER_SHOOT_COOLDOWN
 from circleshape import CircleShape
+from screenwrap import screenwrap
 
 class Player (CircleShape):
+    invincible = False
+
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
@@ -38,8 +41,11 @@ class Player (CircleShape):
 
         if keys [pygame.K_SPACE]:
             self.shoot()
+
+        screenwrap(self)
         
         self.shoot_timer -= dt
+
 
     def move(self, dt):
         forward = pygame.Vector2(0,1).rotate(self.rotation)

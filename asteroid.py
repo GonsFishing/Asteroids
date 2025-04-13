@@ -2,6 +2,7 @@ import pygame, random
 from circleshape import CircleShape
 from explosion import Explosion
 from constants import ASTEROID_MIN_RADIUS, ASTEROID_SPLIT_SPEED_MULTIPLIER
+from screenwrap import screenwrap
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
@@ -12,6 +13,7 @@ class Asteroid(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+        screenwrap(self)
 
     def split(self):
         self.kill()

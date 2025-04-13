@@ -2,9 +2,9 @@
 
 - ~~Implement scoring~~
 - Implement multiple lives and respawning
-- Add an explosion effect for the asteroids
+- ~~Add an explosion effect for the asteroid~~
 - Add acceleration to the player movement
-- Make the objects wrap around the screen instead of disappearing
+- ~~Make the objects wrap around the screen instead of disappearing~~
 - Add a background image
 - Create different weapon types
 - Make the asteroids lumpy instead of perfectly round
